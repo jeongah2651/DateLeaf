@@ -5,10 +5,10 @@ import { isValidEmail, isValidPassword, isValidPasswordComplex } from '../../uti
 import { isAuthError } from '@supabase/supabase-js';
 import Dialog from '../Dialog.tsx';
 
-//디자인 패턴 적용 - Strategy Pattern(전략패턴) : 알고리즘을 객체의 일부분으로 캡슐화하여 독립적으로 알고리즘을 변경가능 
+//디자인 패턴 적용 - Strategy Pattern(전략패턴) : 알고리즘을 객체의 일부분으로 캡슐화하여 독립적으로 알고리즘을 변경가능
 // Validation Strategy : 이메일과 비밀번호 검증을 위한 인터페이스를 정의합니다.
 
-// 전략 구현 
+// 전략 구현
 // 로그인에만, 기존의 비밀번호 유효성 검사에, 특정한 조건의 유효성 검사가 추가될 경우.
 interface DialogElement {
   openModal: () => void;
@@ -31,7 +31,11 @@ const LoginButton = () => {
   const isvalidpasswordcomplex = new isValidPasswordComplex();
 
   const onClick = () => {
-    if (!isvalidemail.validate(email) || !isvalidpassword.validate(password) || !isvalidpasswordcomplex.validate(password)) {
+    if (
+      !isvalidemail.validate(email) ||
+      !isvalidpassword.validate(password) ||
+      !isvalidpasswordcomplex.validate(password)
+    ) {
       setDialogMessage(messages.ISVAILD_ERROR);
       dialogRef.current?.openModal();
       return;
@@ -44,7 +48,8 @@ const LoginButton = () => {
       },
       {
         onError: (error) => {
-          if (isAuthError(error)) { //인증오류
+          if (isAuthError(error)) {
+            //인증오류
             setDialogMessage(messages.AUTH_ERROR);
             dialogRef.current?.openModal();
           }
@@ -52,7 +57,8 @@ const LoginButton = () => {
         onSettled: (data) => {
           console.log(data);
         },
-        onSuccess: (data) => { //로그인 성공시에는 팝업없이 캘린더 메인으로
+        onSuccess: (data) => {
+          //로그인 성공시에는 팝업없이 캘린더 메인으로
           console.log(data);
         },
       },

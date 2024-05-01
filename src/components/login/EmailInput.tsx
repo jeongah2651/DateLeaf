@@ -5,7 +5,7 @@ import { isValidEmail } from '../../utils/authUtils.ts';
 const EmailInput = () => {
   const { email, emailHandler } = useLoginState();
   const isvalidemail = new isValidEmail();
-  
+
   return (
     <InputForm
       defaultValue={email}

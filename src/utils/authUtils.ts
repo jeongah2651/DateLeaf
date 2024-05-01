@@ -10,14 +10,11 @@
 //   return password.length >= 6;
 // };
 
-
-
 // 전략 패턴 적용 후 (isValidEmail, isValidPassword 클래스 구현)
 //1. 전략 인터페이스 구현 : 위 인터페이스는 validate라는 메소드를 포함하고 있으며, 이 메소드는 문자열을 입력받아 boolean 값으로 유효성을 반환합니다.
 export interface ValidationStrategy {
   validate(input: string): boolean;
 }
-
 
 //2. 구체적인 전략 클래스 만들기 : 각 클래스는 ValidationStrategy 인터페이스를 구현하며, 이메일과 비밀번호에 대한 구체적인 검증 로직을 제공합니다.
 // 이 클래스들은 각각 이메일과 비밀번호 검증 로직을 캡슐화하며, validate 메소드를 통해 입력된 데이터의 유효성을 검사합니다.
