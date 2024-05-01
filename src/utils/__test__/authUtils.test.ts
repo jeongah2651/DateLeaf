@@ -1,4 +1,5 @@
 import { isValidEmail, isValidPassword } from '../authUtils';
+import { describe, it, expect } from 'vitest';
 
 describe('이메일 검증 유틸리티 함수 테스트', () => {
   const emailValidator = new isValidEmail(); // 인스턴스 생성
