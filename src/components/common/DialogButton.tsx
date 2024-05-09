@@ -8,7 +8,8 @@ interface DialogElement {
 
 interface Props {
   classname?: string;
-  name: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  name: any;
   title?: string;
   desc: string;
   children?: ReactNode;

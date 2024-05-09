@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/enforces-shorthand */
 import { FC, ReactNode } from 'react';
 
 interface Props {
@@ -6,7 +7,7 @@ interface Props {
 
 const JoinPageLayout: FC<Props> = ({ children }) => {
   return (
-    <main className={'m-auto flex size-full max-w-md flex-col items-center justify-center overflow-auto p-8'}>
+    <main className={'m-auto flex h-full w-full max-w-md flex-col items-center justify-center overflow-auto p-8'}>
       {children}
     </main>
   );

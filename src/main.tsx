@@ -5,12 +5,20 @@ import './styles/index.css';
 import App from './App.tsx';
 import TextInputForm from './pages/InputFormTest.tsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { JoinPage, LoginPage, EditPwPage, NotFound, Policy } from './pages/index.ts';
+import ChangePasswordPage from './pages/ChangePasswordPage.tsx';
+import { JoinPage, LoginPage, ResetPwPage, NotFound, Policy } from './pages/index.ts';
+import ProtectedRoute from './providers/ProtectedRoute.tsx';
+
+import UserInvite from './components/common/UserInvite.tsx';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: (
+      <ProtectedRoute>
+        <App />
+      </ProtectedRoute>
+    ),
   },
   {
     path: '/login',
@@ -22,7 +30,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/editPw',
-    element: <EditPwPage />,
+    element: <ResetPwPage />,
+  },
+  {
+    path: '/change-password',
+    element: <ChangePasswordPage />,
   },
   {
     path: '*',
@@ -34,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: 'inputForm',
         element: <TextInputForm />,
+      },
+      {
+        path: 'UserInvite',
+        element: <UserInvite />,
       },
     ],
   },
