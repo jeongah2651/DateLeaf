@@ -1,5 +1,4 @@
 /* eslint-disable tailwindcss/no-custom-classname */
-import React from 'react';
 import { Calendar } from './components/common/Calendar.tsx';
 
 function App() {
